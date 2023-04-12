@@ -2151,3 +2151,16 @@ f9e628,127.0.0.1,POST,http://127.0.0.1:8000/connexion,1681291574,,302
 f21236,127.0.0.1,GET,http://127.0.0.1:8000/api/categories,1681291637,,401
 6b3b52,127.0.0.1,GET,http://127.0.0.1:8000/api/categories,1681295442,,401
 425b23,127.0.0.1,POST,http://127.0.0.1:8000/auth,1681295484,,200
+23838d,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CNavController%253A%253Anav,1681296961,e09b3a,200
+173871,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CNavController%253A%253Abandeau,1681296961,e09b3a,200
+e09b3a,127.0.0.1,GET,http://127.0.0.1:8000/,1681296961,,200
+0808e7,127.0.0.1,GET,http://127.0.0.1:8000/assets/media/categories/xbox.jpg,1681296961,dec1b7,404
+dec1b7,127.0.0.1,GET,http://127.0.0.1:8000/assets/media/categories/xbox.jpg,1681296961,,404
+e5b908,127.0.0.1,GET,http://127.0.0.1:8000/api,1681296966,,302
+7e3122,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CNavController%253A%253Anav,1681296966,8d895e,200
+8d895e,127.0.0.1,GET,http://127.0.0.1:8000/connexion,1681296966,,200
+b2ec4b,127.0.0.1,POST,http://127.0.0.1:8000/connexion,1681296968,,302
+93332e,127.0.0.1,GET,http://127.0.0.1:8000/api,1681296969,,200
+d7bb7a,127.0.0.1,GET,http://127.0.0.1:8000/cat/Jeux%20PS5,1681297243,d9c94c,404
+d9c94c,127.0.0.1,GET,http://127.0.0.1:8000/cat/Jeux%20PS5,1681297243,,404
+7b0f2c,127.0.0.1,GET,http://127.0.0.1:8000/api/categories,1681297953,,401
