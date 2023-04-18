@@ -1,2 +1,4 @@
 Green-Village/var
 Green-Village/vendor
+*.meta
+Green-Village/var/cache/dev/ContainerPACpqUY/get_Console_Command_CachePoolDelete_LazyService.php
