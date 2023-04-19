@@ -7,6 +7,7 @@ require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'LoginThrottlingConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'X509Config.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'RemoteUserConfig.php';
+require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'JwtConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'LoginLinkConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'FormLoginConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'FormLoginLdapConfig.php';
@@ -16,6 +17,7 @@ require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'HttpBasicConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'HttpBasicLdapConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'RememberMeConfig.php';
+require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'RefreshJwtConfig.php';
 
 use Symfony\Component\Config\Loader\ParamConfigurator;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
@@ -45,6 +47,7 @@ class FirewallConfig
     private $loginThrottling;
     private $x509;
     private $remoteUser;
+    private $jwt;
     private $loginLink;
     private $formLogin;
     private $formLoginLdap;
@@ -54,6 +57,7 @@ class FirewallConfig
     private $httpBasic;
     private $httpBasicLdap;
     private $rememberMe;
+    private $refreshJwt;
     private $_usedProperties = [];
 
     /**
@@ -326,6 +330,18 @@ class FirewallConfig
         return $this->remoteUser;
     }
 
+    public function jwt(array $value = []): \Symfony\Config\Security\FirewallConfig\JwtConfig
+    {
+        if (null === $this->jwt) {
+            $this->_usedProperties['jwt'] = true;
+            $this->jwt = new \Symfony\Config\Security\FirewallConfig\JwtConfig($value);
+        } elseif (0 < \func_num_args()) {
+            throw new InvalidConfigurationException('The node created by "jwt()" has already been initialized. You cannot pass values the second time you call jwt().');
+        }
+
+        return $this->jwt;
+    }
+
     public function loginLink(array $value = []): \Symfony\Config\Security\FirewallConfig\LoginLinkConfig
     {
         if (null === $this->loginLink) {
@@ -432,6 +448,18 @@ class FirewallConfig
         }
 
         return $this->rememberMe;
+    }
+
+    public function refreshJwt(array $value = []): \Symfony\Config\Security\FirewallConfig\RefreshJwtConfig
+    {
+        if (null === $this->refreshJwt) {
+            $this->_usedProperties['refreshJwt'] = true;
+            $this->refreshJwt = new \Symfony\Config\Security\FirewallConfig\RefreshJwtConfig($value);
+        } elseif (0 < \func_num_args()) {
+            throw new InvalidConfigurationException('The node created by "refreshJwt()" has already been initialized. You cannot pass values the second time you call refreshJwt().');
+        }
+
+        return $this->refreshJwt;
     }
 
     public function __construct(array $value = [])
@@ -556,6 +584,12 @@ class FirewallConfig
             unset($value['remote_user']);
         }
 
+        if (array_key_exists('jwt', $value)) {
+            $this->_usedProperties['jwt'] = true;
+            $this->jwt = new \Symfony\Config\Security\FirewallConfig\JwtConfig($value['jwt']);
+            unset($value['jwt']);
+        }
+
         if (array_key_exists('login_link', $value)) {
             $this->_usedProperties['loginLink'] = true;
             $this->loginLink = new \Symfony\Config\Security\FirewallConfig\LoginLinkConfig($value['login_link']);
@@ -608,6 +642,12 @@ class FirewallConfig
             $this->_usedProperties['rememberMe'] = true;
             $this->rememberMe = new \Symfony\Config\Security\FirewallConfig\RememberMeConfig($value['remember_me']);
             unset($value['remember_me']);
+        }
+
+        if (array_key_exists('refresh_jwt', $value)) {
+            $this->_usedProperties['refreshJwt'] = true;
+            $this->refreshJwt = new \Symfony\Config\Security\FirewallConfig\RefreshJwtConfig($value['refresh_jwt']);
+            unset($value['refresh_jwt']);
         }
 
         if ([] !== $value) {
@@ -678,6 +718,9 @@ class FirewallConfig
         if (isset($this->_usedProperties['remoteUser'])) {
             $output['remote_user'] = $this->remoteUser->toArray();
         }
+        if (isset($this->_usedProperties['jwt'])) {
+            $output['jwt'] = $this->jwt->toArray();
+        }
         if (isset($this->_usedProperties['loginLink'])) {
             $output['login_link'] = $this->loginLink->toArray();
         }
@@ -704,6 +747,9 @@ class FirewallConfig
         }
         if (isset($this->_usedProperties['rememberMe'])) {
             $output['remember_me'] = $this->rememberMe->toArray();
+        }
+        if (isset($this->_usedProperties['refreshJwt'])) {
+            $output['refresh_jwt'] = $this->refreshJwt->toArray();
         }
 
         return $output;

@@ -37,6 +37,7 @@ class ComposerStaticInitad5b007552841f7a5eb3e8cd7c6fa2ee
         ),
         'S' => 
         array (
+            'Symfony\\WebpackEncoreBundle\\' => 28,
             'Symfony\\Runtime\\Symfony\\Component\\' => 34,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
@@ -192,6 +193,10 @@ class ComposerStaticInitad5b007552841f7a5eb3e8cd7c6fa2ee
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\WebpackEncoreBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src',
         ),
         'Symfony\\Runtime\\Symfony\\Component\\' => 
         array (
@@ -575,7 +580,7 @@ class ComposerStaticInitad5b007552841f7a5eb3e8cd7c6fa2ee
         ),
         'Doctrine\\Common\\DataFixtures\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures',
+            0 => __DIR__ . '/..' . '/doctrine/data-fixtures/src',
         ),
         'Doctrine\\Common\\Collections\\' => 
         array (

@@ -75,6 +75,16 @@ class DefaultsConfig
     private $processor;
     private $stateOptions;
     private $extraProperties;
+    private $routeName;
+    private $read;
+    private $deserialize;
+    private $validate;
+    private $write;
+    private $serialize;
+    private $priority;
+    private $name;
+    private $allowCreate;
+    private $itemUriTemplate;
     private $_usedProperties = [];
     private $_extraKeys;
 
@@ -1002,6 +1012,146 @@ class DefaultsConfig
         return $this;
     }
 
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function routeName(mixed $value): static
+    {
+        $this->_usedProperties['routeName'] = true;
+        $this->routeName = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function read(mixed $value): static
+    {
+        $this->_usedProperties['read'] = true;
+        $this->read = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function deserialize(mixed $value): static
+    {
+        $this->_usedProperties['deserialize'] = true;
+        $this->deserialize = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function validate(mixed $value): static
+    {
+        $this->_usedProperties['validate'] = true;
+        $this->validate = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function write(mixed $value): static
+    {
+        $this->_usedProperties['write'] = true;
+        $this->write = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function serialize(mixed $value): static
+    {
+        $this->_usedProperties['serialize'] = true;
+        $this->serialize = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function priority(mixed $value): static
+    {
+        $this->_usedProperties['priority'] = true;
+        $this->priority = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function name(mixed $value): static
+    {
+        $this->_usedProperties['name'] = true;
+        $this->name = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function allowCreate(mixed $value): static
+    {
+        $this->_usedProperties['allowCreate'] = true;
+        $this->allowCreate = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     *
+     * @return $this
+     */
+    public function itemUriTemplate(mixed $value): static
+    {
+        $this->_usedProperties['itemUriTemplate'] = true;
+        $this->itemUriTemplate = $value;
+
+        return $this;
+    }
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('uri_template', $value)) {
@@ -1400,6 +1550,66 @@ class DefaultsConfig
             unset($value['extra_properties']);
         }
 
+        if (array_key_exists('route_name', $value)) {
+            $this->_usedProperties['routeName'] = true;
+            $this->routeName = $value['route_name'];
+            unset($value['route_name']);
+        }
+
+        if (array_key_exists('read', $value)) {
+            $this->_usedProperties['read'] = true;
+            $this->read = $value['read'];
+            unset($value['read']);
+        }
+
+        if (array_key_exists('deserialize', $value)) {
+            $this->_usedProperties['deserialize'] = true;
+            $this->deserialize = $value['deserialize'];
+            unset($value['deserialize']);
+        }
+
+        if (array_key_exists('validate', $value)) {
+            $this->_usedProperties['validate'] = true;
+            $this->validate = $value['validate'];
+            unset($value['validate']);
+        }
+
+        if (array_key_exists('write', $value)) {
+            $this->_usedProperties['write'] = true;
+            $this->write = $value['write'];
+            unset($value['write']);
+        }
+
+        if (array_key_exists('serialize', $value)) {
+            $this->_usedProperties['serialize'] = true;
+            $this->serialize = $value['serialize'];
+            unset($value['serialize']);
+        }
+
+        if (array_key_exists('priority', $value)) {
+            $this->_usedProperties['priority'] = true;
+            $this->priority = $value['priority'];
+            unset($value['priority']);
+        }
+
+        if (array_key_exists('name', $value)) {
+            $this->_usedProperties['name'] = true;
+            $this->name = $value['name'];
+            unset($value['name']);
+        }
+
+        if (array_key_exists('allow_create', $value)) {
+            $this->_usedProperties['allowCreate'] = true;
+            $this->allowCreate = $value['allow_create'];
+            unset($value['allow_create']);
+        }
+
+        if (array_key_exists('item_uri_template', $value)) {
+            $this->_usedProperties['itemUriTemplate'] = true;
+            $this->itemUriTemplate = $value['item_uri_template'];
+            unset($value['item_uri_template']);
+        }
+
         $this->_extraKeys = $value;
 
     }
@@ -1604,6 +1814,36 @@ class DefaultsConfig
         }
         if (isset($this->_usedProperties['extraProperties'])) {
             $output['extra_properties'] = $this->extraProperties;
+        }
+        if (isset($this->_usedProperties['routeName'])) {
+            $output['route_name'] = $this->routeName;
+        }
+        if (isset($this->_usedProperties['read'])) {
+            $output['read'] = $this->read;
+        }
+        if (isset($this->_usedProperties['deserialize'])) {
+            $output['deserialize'] = $this->deserialize;
+        }
+        if (isset($this->_usedProperties['validate'])) {
+            $output['validate'] = $this->validate;
+        }
+        if (isset($this->_usedProperties['write'])) {
+            $output['write'] = $this->write;
+        }
+        if (isset($this->_usedProperties['serialize'])) {
+            $output['serialize'] = $this->serialize;
+        }
+        if (isset($this->_usedProperties['priority'])) {
+            $output['priority'] = $this->priority;
+        }
+        if (isset($this->_usedProperties['name'])) {
+            $output['name'] = $this->name;
+        }
+        if (isset($this->_usedProperties['allowCreate'])) {
+            $output['allow_create'] = $this->allowCreate;
+        }
+        if (isset($this->_usedProperties['itemUriTemplate'])) {
+            $output['item_uri_template'] = $this->itemUriTemplate;
         }
 
         return $output + $this->_extraKeys;
