@@ -92,3 +92,7 @@ c906cb,127.0.0.1,GET,http://127.0.0.1:8000/api/photos?majorPicture=true&refProdu
 3cd8e6,127.0.0.1,GET,http://127.0.0.1:8000/api/photos?majorPicture=true&refProduit=3,1681726030,,200
 fadd1a,127.0.0.1,GET,http://127.0.0.1:8000/api/photos?majorPicture=true&refProduit=4,1681726030,,200
 167503,127.0.0.1,GET,http://127.0.0.1:8000/api/photos?majorPicture=true&refProduit=5,1681726030,,200
+36f04e,127.0.0.1,GET,http://127.0.0.1:8000/,1683200593,587f49,500
+587f49,127.0.0.1,GET,http://127.0.0.1:8000/,1683200593,,500
+44fcd7,127.0.0.1,GET,http://127.0.0.1:8000/,1683790244,8f3c15,500
+8f3c15,127.0.0.1,GET,http://127.0.0.1:8000/,1683790244,,500
